@@ -15,6 +15,7 @@ class Goals extends Component {
     }
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
@@ -65,7 +66,13 @@ class Goals extends Component {
   }
 
   handleClose (e) {
-    this.setState({modalOpen: false});
+    this.setState({modalOpen: false, newGoal: {}});
+  }
+
+  handleChange (e,d) {
+    var goal = this.state.newGoal
+    var newGoal = Object.assign({}, goal, {[d.name]: d.value});
+    this.setState({newGoal: newGoal});
   }
 
   render() {
