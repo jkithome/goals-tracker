@@ -7,13 +7,13 @@ module.exports = {
     config: './config.js'
   },
   output : {
-    path: apth.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     filename: "[name].js"
   },
   module: {
     rules: [
       {
-        test: /\.js%/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [{
           loader: 'babel-loader',
