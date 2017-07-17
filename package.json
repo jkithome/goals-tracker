@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/http-server ./dist",
-    "postinstall": "./node_modules/.bin/webpack"
+    "start": "./node_modules/.bin/webpack && node server.js"
   },
   "repository": {
     "type": "git",
