@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Header, Grid, Card, Button, Select, Modal, Icon, Form, Input, TextArea} from 'semantic-ui-react';
 import fetch from 'isomorphic-fetch';
+import moment from 'moment';
 
 class Goals extends Component {
   constructor() {
@@ -12,6 +13,8 @@ class Goals extends Component {
       newGoal: {},
       modalOpen: false
     }
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentWillMount() {
@@ -55,6 +58,14 @@ class Goals extends Component {
       })
       this.setState({goals: newGoals})
     })
+  }
+
+  handleOpen (e) {
+    this.setState({modalOpen: true});
+  }
+
+  handleClose (e) {
+    this.setState({modalOpen: false});
   }
 
   render() {
