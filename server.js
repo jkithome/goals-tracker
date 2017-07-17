@@ -8,6 +8,7 @@ var app = express();
 mongoose.connect(process.env.DATABASE_URL);
 var Goal = require('./Models/goal');
 var Pusher = require('pusher');
+var port = process.env.PORT || 8080;
 
 var pusher = new Pusher({
   appId: process.env.APP_ID,
@@ -77,7 +78,7 @@ app.get('*', function(req,res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.listen(3000);
+app.listen(port);
 
 console.log('App is listening on port 3000');
 
