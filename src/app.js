@@ -38,10 +38,36 @@ class Goals extends Component {
     })
   }
 
+  componentDidMount() {
+    this.goalsChannel.bind('new', (goal) => {
+      var goals = this.state.goals;
+      goals.push(goal);
+      this.setState({goals: goals})
+    });
+    this.goalsChannel.bind('update', (goal) => {
+      var goals = this.state.goals;
+      var newGoals = goals.map(_goal => {
+        if(_goal._id === goal._id) {
+          return Object.assign({}, goal)
+        } else {
+          return _goal
+        }
+      })
+      this.setState({goals: newGoals})
+    })
+  }
+
   render() {
+    const options =  [
+      { key: '1', text: '1', value: 1 },
+      { key: '2', text: '2', value: 2 },
+      { key: '3', text: '3', value: 3 },
+      { key: '4', text: '4', value: 4 },
+      { key: '5', text: '5', value: 5 },
+    ]
     return (
       <div>
-        <Header as='h4' color='blue' block>Goals Tracker</Header>
+        <Header as='h4' color='blue' block>SGY Goals Tracker</Header>
         <Grid centered columns={2}>
           <Grid.Column>
             <Modal
