@@ -16,6 +16,7 @@ class Goals extends Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -73,6 +74,26 @@ class Goals extends Component {
     var goal = this.state.newGoal
     var newGoal = Object.assign({}, goal, {[d.name]: d.value});
     this.setState({newGoal: newGoal});
+  }
+
+  handleSubmit(e) {
+    fetch('/api/goal', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(this.state.newGoal)
+    }).then(response => {
+      if(!response.ok) {
+        return response.json().then(Promise.reject.bind(Promise))
+      }
+      return response.json()
+    }).then(json => {
+      console.log('New obj', json)
+    }).catch(err => {
+      console.log('Error happened', err);
+    })
+    this.handleClose()
   }
 
   render() {
