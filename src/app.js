@@ -19,6 +19,7 @@ class Goals extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.raisePriority = this.raisePriority.bind(this);
     this.decreasePriority = this.decreasePriority.bind(this);
+    this.changeOrderPriority = this.changeOrderPriority.bind(this);
   }
 
   componentWillMount() {
@@ -100,6 +101,10 @@ class Goals extends Component {
     }).catch(err => {
       console.log('There was an error');
     })
+  }
+
+  changeOrderPriority(data) {
+    this.setState({sort: data.value});
   }
 
   handleOpen (e) {
