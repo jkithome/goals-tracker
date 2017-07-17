@@ -6,7 +6,7 @@ mongoose.Promise = require('bluebird');
 var path = require('path');
 var app = express();
 mongoose.connect(process.env.DATABASE_URL);
-var Goal = require('./models/goal');
+var Goal = require('./Models/goal');
 var Pusher = require('pusher');
 
 var pusher = new Pusher({
