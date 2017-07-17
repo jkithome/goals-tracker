@@ -23,8 +23,8 @@ class Goals extends Component {
   }
 
   componentWillMount() {
-    this.pusher = new Pusher(window.pusherDetails.key, {
-      cluster: window.pusherDetails.cluster,
+    this.pusher = new Pusher('00001aa3ea2b12908043', {
+      cluster: 'us2',
       encrypted: true
     });
     this.goalsChannel = this.pusher.subscribe('goals');
