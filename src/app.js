@@ -159,30 +159,30 @@ class Goals extends Component {
               open={this.state.modalOpen}
               onClose={this.handleClose}
             >
-                <Header content='Add New Goal' />
-                <Modal.Content>
-                  <Form>
-                    <Form.Group widths='equal'>
-                      <Form.Field id='form-input-control-title' control={Input} label='Title' name='title' placeholder='title' onChange={this.handleChange}/>
-                      <Form.Field id='form-input-control-email' control={Input} label='Email' name='email' placeholder='email' onChange={this.handleChange}/>
-                    </Form.Group>
-                    <Form.Group widths='equal'>
-                      <Form.Field id='form-textarea-control-description' control={TextArea} label='Description' name='description' placeholder='description' onChange={this.handleChange}/>
-                    </Form.Group>
-                    <Form.Group widths='equal'>
-                      <Form.Field control={Select} label='Priority' options={options} name='priority' placeholder='priority' onChange={this.handleChange}/>
-                    </Form.Group>
-                  </Form>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button color='red' inverted onClick={this.handleClose}>
-                    <Icon name='cancel' /> Cancel
-                  </Button>
-                  <Button color='green' inverted onClick={this.handleSubmit}>
-                    <Icon name='checkmark' /> Create
-                  </Button>
-                </Modal.Actions>
-              </Modal>
+              <Header content='Add New Goal' />
+              <Modal.Content>
+                <Form>
+                  <Form.Group widths='equal'>
+                    <Form.Field id='form-input-control-title' control={Input} label='Title' name='title' placeholder='title' onChange={this.handleChange}/>
+                    <Form.Field id='form-input-control-email' control={Input} label='Email' name='email' placeholder='email' onChange={this.handleChange}/>
+                  </Form.Group>
+                  <Form.Group widths='equal'>
+                    <Form.Field id='form-textarea-control-description' control={TextArea} label='Description' name='description' placeholder='description' onChange={this.handleChange}/>
+                  </Form.Group>
+                  <Form.Group widths='equal'>
+                    <Form.Field control={Select} label='Priority' options={options} name='priority' placeholder='priority' onChange={this.handleChange}/>
+                  </Form.Group>
+                </Form>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button color='red' inverted onClick={this.handleClose}>
+                  <Icon name='cancel' /> Cancel
+                </Button>
+                <Button color='green' inverted onClick={this.handleSubmit}>
+                  <Icon name='checkmark' /> Create
+                </Button>
+              </Modal.Actions>
+            </Modal>
           </Grid.Column>
         </Grid>
         <Grid>
