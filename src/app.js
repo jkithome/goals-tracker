@@ -17,6 +17,7 @@ class Goals extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.raisePriority = this.raisePriority.bind(this);
   }
 
   componentWillMount() {
@@ -59,6 +60,25 @@ class Goals extends Component {
         }
       })
       this.setState({goals: newGoals})
+    })
+  }
+
+  raisePriority (id, priority) {
+    fetch('/api/goal/' + id, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'PUT',
+      body: JSON.stringify({priority: priority + 1})
+    }).then(response => {
+      if (!response.ok) {
+        return response.json().then(Promise.reject.bind(Promise))
+      }
+      return response.json()
+    }).then(json => {
+      console.log('The object was updated');
+    }).catch(err => {
+      console.log('There was an error!')
     })
   }
 
