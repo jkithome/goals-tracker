@@ -1,13 +1,41 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Header, Grid, Card, Button, Select, Modal, Icon, Form, Input, TextArea} from 'semantic-ui-react';
+import fetch from 'isomorphic-fetch';
 
 class Goals extends Component {
   constructor() {
     super()
     this.state = {
-
+      goals: [],
+      sort: 'Highest',
+      newGoal: {},
+      modalOpen: false
     }
+  }
+
+  componentWillMount() {
+    this.pusher = new Pusher(window.pusherDetails.key, {
+      cluster: window.pusherDetails.cluster,
+      encrypted: true
+    });
+    this.goalsChannel = this.pusher.subscribe('goals');
+
+    fetch('/api/goals', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    }).then(response => {
+      if(!response.ok) {
+        return response.json().then(Promise.reject.bind(Promise))
+      }
+      return response.json()
+    }).then(json => {
+      this.setState({goals: json})
+    }).catch(err => {
+      console.log('Error happened', err);
+    })
   }
 
   render() {
